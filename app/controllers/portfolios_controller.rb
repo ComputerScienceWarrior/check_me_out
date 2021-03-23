@@ -1,5 +1,6 @@
 class PortfoliosController < ApplicationController
     # access is allowing access to specific petergate defined roles from the petergate gem
+    before_action :find_portfolio, only: [:show, :update, :destroy]
     access all: [:show, :index], user: {except: [:destroy]}, admin: :all
 
     def index
@@ -20,5 +21,22 @@ class PortfoliosController < ApplicationController
         else
             render :new
         end
+    end
+
+    def edit
+    end
+
+    def update
+        
+    end
+
+    def destroy
+
+    end
+
+    private 
+
+    def find_portfolio
+        @portfolio = Portfolio.find(params[:id])
     end
 end
