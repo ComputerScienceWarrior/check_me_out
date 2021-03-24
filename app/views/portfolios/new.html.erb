@@ -1,0 +1,7 @@
+<%= form_for :portfolio do |p| %>
+    <label>Name: </label><%= p.text_field :name %><br/><br/>
+    <label>Header: </label><%= p.text_field :header %><br/><br/>
+    <label>Header: </label><%= p.text_area :description %><br/><br/>
+    <label>Header: </label><%= p.text_area :header %><br/><br/>
+    <%= p.submit "Create Portfolio"%>
+<% end %>
