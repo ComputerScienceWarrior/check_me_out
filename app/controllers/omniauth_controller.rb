@@ -1,16 +1,17 @@
 class OmniauthController < ApplicationController
 
     def facebook
-        @user = User.create_from_provider_data(request.env["omniauth"])
+        @user = User.create_from_provider_data(request.env["omniauth.auth"])
         if @user.save
             sign_in_and_redirect @user
         else
+            flash[:error] = "An error occured!"
             redirect_to new_user_registration_url
         end
     end
 
     def github
-        @user = User.create_from_github_data(request.env["omniauth"])
+        @user = User.create_from_provider_data(request.env["omniauth.auth"])
         if @user.save
             sign_in_and_redirect @user
         else
@@ -19,8 +20,8 @@ class OmniauthController < ApplicationController
     end
 
     def google_oauth2
-        @user = User.create_from_google_data(request.env["omniauth"])
-        if @user.save
+        @user = User.create_from_provider_data(request.env["omniauth.auth"])
+        if @user.save!
             sign_in_and_redirect @user
         else
             redirect_to new_user_registration_url
