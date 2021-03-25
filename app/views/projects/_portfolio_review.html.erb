@@ -1,0 +1,7 @@
+<%# File to display all reviews belonging to a specific portfolio %>
+<h2>All Portfolio Reviews</h2>
+<% @portfolio.reviews do |review| %>
+    <hr>
+        Review from: <%= review.user.username%><br/><%= reivew.content%>
+    <hr>
+<% end %>
