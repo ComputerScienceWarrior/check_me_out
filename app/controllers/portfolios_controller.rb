@@ -27,11 +27,19 @@ class PortfoliosController < ApplicationController
     end
 
     def update
-        
+        def update
+            if @portfolio.update(portfolio_params)
+                redirect_to user_portfolio_path(current_user, portfolio)
+            else
+                render :edit
+            end
+        end
     end
 
     def destroy
-
+        @portfolio.projects.destroy_all
+        @portfolio.reviews.destroy_all
+        redirect_to user_path(current_user)
     end
 
     private 
