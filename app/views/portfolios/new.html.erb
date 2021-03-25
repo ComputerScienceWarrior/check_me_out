@@ -1,4 +1,4 @@
-<%= form_for :portfolio do |p| %>
+<%= form_for :portfolio, url: user_portfolios_path, method: :post do |p| %>
     <label>Name: </label><br/><%= p.text_field :name, placeholder: "Enter a name for your Portfolio" %><br/><br/>
     <label>Header: </label><br/><%= p.text_field :header, placeholder: "Create a header for your viewers"%><br/><br/>
     <label>Describe your Portfolio: </label><br/><%= p.text_area :description, placeholder: "Portfolio Description" %><br/><br/>
