@@ -1,2 +1,4 @@
 <%= @user.full_name%>
+<%= @user.username%>
+<%= link_to "Logout", destroy_user_session_path, method: :delete%>
 <%= link_to "New Portfolio",new_user_portfolio_path(@user.id) %>
