@@ -16,7 +16,7 @@ class PortfoliosController < ApplicationController
     def create
         @portfolio = Portfolio.new(portfolio_params)
         if @portfolio.save
-            redirect_to user_portfolio_path(current_user, @portfolio)
+            redirect_to user_portfolio_path(session[:user_id], @portfolio)
         else
             flash[:error] = "Portfolio was not properly created. Try again."
             render :new
